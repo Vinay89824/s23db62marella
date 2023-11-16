@@ -17,4 +17,5 @@ router.put('/gadget/:id', gadget_controller.gadget_update_put);
 router.get('/gadget/:id', gadget_controller.gadget_detail);
 // GET request for list of all gadget items.
 router.get('/gadget', gadget_controller.gadget_list);
+
 module.exports = router;
