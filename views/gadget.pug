@@ -1,21 +1,19 @@
 extends layout
-
 block content
-    h1 This is Gadgets. page
-    p Welcome to Pug #{title}
-    - let items = results
-    div.container-fluid
-    div.row
-        each item,index in items
-            div.col-sm-2
-            div
-            div(class="col-sm-2" onclick=`buy (${index})`) Name: #{item.name}
-            div(class="col-sm-2" onclick=`buy (${index})`) Size: #{item.quantity}
-            div(class="col-sm-2" onclick=`buy (${index})`) Price: $#{item.price}
-    script.
-      function buy(itemNum){
-        alert(`you purchased item ${itemNum+1}`)
-     }
+  h1 Details of gadget
+  -
+    let items = results
+  div(class="container-fluid")
+    div(class="row m-1")
+      each item in items
+        - let destination = `dispatch(\"/hats/update?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.quantity}) is #{item.price}
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
 
-       
-        
+
+
+ 
+  script.
+    function dispatch(path){
+      window.location.href=path
+    }

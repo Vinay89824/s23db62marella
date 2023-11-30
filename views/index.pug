@@ -3,22 +3,22 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  button(type="button", class="btn btn-primary") Press Me 
-   div.container
-  div#mphDisplay
-    | MPH #{mph} with change #{change}.
-  button(onclick='goFaster()') Go Faster
-  
+
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/gadget") Take me to gadget
+    br
+    a(href="/logout") Logout
+
   script.
     var mph = 20;
     var change = 1;
-   function goFaster()
-    {
-       
-        mph =mph+change;
-        change++;
-        document.getElementById('mphDisplay').textContent = `MPH ${mph} with change ${change}`;
+    function goFaster() {
+      mph = mph + change;
+      change++;
+      document.getElementById('mphDisplay').textContent = `MPH ${mph} with change ${change}`;
     }
-  
-
-
