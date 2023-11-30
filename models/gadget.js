@@ -1,7 +1,13 @@
 const mongoose = require("mongoose")
 const gadgetSchema = mongoose.Schema({
-name: String,
-quantity: String,
+name: {type: String,
+    minlength : 1,
+    maxlength : 7
+},
+quantity: {type: String,
+    minlength : 1,
+    maxlength : 7
+},
 price: { type : Number,
     min : 1,
     max : 40000
